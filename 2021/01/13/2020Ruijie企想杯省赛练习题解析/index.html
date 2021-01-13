@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, shellyの博客">
+    <meta name="keywords" content="shellyの博客">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hello World | shellyの博客</title>
+    <title>shellyの博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -247,12 +247,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title"></h1>
                 </div>
             </div>
         </div>
@@ -380,7 +380,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-01-01
+                    2021-01-13
                 </div>
                 
 
@@ -401,15 +401,492 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+                <p><strong>3、网络设备安全技术</strong></p>
+<ul>
+<li>为交换机和无线控制器开启SSH服务端功能，用户名和密码为admin，密码为明文类型,特权密码为admin。</li>
+</ul>
+<p><strong>Ruijie(config)#enable service ssh-server</strong></p>
+<p><strong>Ruijie(config)#username admin PASsword admin</strong></p>
+<p><strong>Ruijie(config)#enable password admin</strong></p>
+<ul>
+<li>为路由器和出口网关开启Telnet功能，对所有Telnet用户采用本地认证的方式。创建本地用户，设定用户名和密码为admin，密码为明文类型,特权密码为admin。</li>
+</ul>
+<p>Ruijie(config)#enable service telnet-server</p>
+<p>Ruijie(config)#username admin PASsword admin</p>
+<p>Ruijie(config)#enable password admin</p>
+<ul>
+<li>配置所有设备SNMP消息，向主机172.16.0.254发送Trap消息版本采用V2C，读写的Community为“ruijie”，只读的Community为“public”，开启Trap消息。</li>
+</ul>
+<p>Ruijie(config)#snmp-server enable traps</p>
+<p>Ruijie(config)#snmp-server community public  rw           </p>
+<p>Ruijie(config)snmp-server community ruijie rw </p>
+<p>Ruijie(config)snmp-server community public ro</p>
+<p>​    </p>
+<p>Ruijie(config)# snmp-server host 172.16.0.254 traps version 2c ruijie</p>
+<p>Ruijie(config)#snmp-server host 172.16.0.254 traps version 2c public</p>
+<ol>
+<li><strong>局域网环路规避方案部署</strong></li>
+</ol>
+<p>为规避网络末端接入设备上出现环路影响全网，要求在本部接入设备S1，S2进行防环处理。具体要求如下：</p>
+<ul>
+<li>终端接口开启BPDU防护不能接收 BPDU Guard报文；</li>
+</ul>
+<p>Ruijie(config)#interface gigabitEthernet 0/1</p>
+<p>Ruijie(config-if)#spanning-tree bpduguard enable</p>
+<ul>
+<li>终端接口下开启RLDP防止环路，检测到环路后处理方式为Shutdown-Port；</li>
+</ul>
+<p>Ruijie(config)#rldp enable </p>
+<p>Ruijie(config)#interface gigabitEthernet 0/1</p>
+<p>rldp port   loop-detect  shutdown-port</p>
+<ul>
+<li>连接终端的所有端口配置为边缘端口；</li>
+</ul>
+<p>int gi0/1</p>
+<p>Spanning-tree portfast</p>
+<ul>
+<li>如果端口被 BPDU Guard检测进入 Err-Disabled状态，再过 300 秒后会自动恢复（基于接口部署策略），重新检测是否有环路；</li>
+</ul>
+<p>Ruijie(config)#interface gigabitEthernet 0/1</p>
+<p>Ruijie(config-if-range)#errdisable recovery interval 300</p>
+<ul>
+<li>规避高流量报文风暴对网络的冲击，在交换机S5上针对用户终端接口的广播，组播，未知名单播启用风暴限制，限制级别2；</li>
+</ul>
+<p>Ruijie(config-if-GigabitEthernet 0/1)#storm-control multicast level 2 </p>
+<p>Ruijie(config-if-GigabitEthernet 0/1)#storm-control broadcast level 2</p>
+<p>Ruijie(config-if-GigabitEthernet 0/1)#storm-control unicast level 2</p>
+<ol>
+<li><strong>DHCP中继与服务安全部署</strong></li>
+</ol>
+<p>在交换机S3、S4上配置DHCP中继，对VLAN10内的用户进行中继，使得本部PC1用户使用DHCP Relay方式获取IP地址。具体要求如下：</p>
+<ul>
+<li>DHCP服务器搭建于EG1上，地址池命名为Pool_VLAN10，DHCP对外服务使用loopback 0地址；</li>
+</ul>
+<p>Ruijie(config)#int loopback 0</p>
+<p>Ruijie(config-if-Loopback 0)#ip address 11.1.0.11 255.255.255.255</p>
+<p>Ruijie(config)#int loopback 1</p>
+<p>Ruijie(config-if-Loopback 0)#ip address 12.1.0.1 255.255.255.255</p>
+<p>ip dhcp pool Pool_VLAN10 </p>
+<p>option 138 ip 11.1.0.11</p>
+<p> network 192.168.10.0 255.255.255.0</p>
+<p> default-router 192.168.10.252</p>
+<p>为了防御动态环境局域网伪DHCP服务欺骗，在S1、S2交换机部署DHCP Snooping功能；</p>
+<p>Ruijie(config)#ip dhcp snooping</p>
+<p>Ruijie(config)#int  rang gigabitEthernet 0/23 -24</p>
+<p>Ruijie(config-if-GigabitEthernet 0/24)#ip dh snooping suppression</p>
+<ul>
+<li>为了防止大量网关发送的正常的相关报文被接入交换机误认为是攻击被丢弃，从而导致下联用户无法获取网关的ARP信息而无法上网，要求关闭S1/S2上联口的NFPP功能；</li>
+</ul>
+<p>Ruijie(config)#int ra gigabitEthernet 0/23-24</p>
+<p>Ruijie(config-if-range)#no nfpp arp-guard enable </p>
+<ul>
+<li>全局设置NFPP日志缓存容量为1024，打印相同log的阈值为300s;</li>
+</ul>
+<p>Ruijie(config)#nfpp</p>
+<p>Ruijie(config-nfpp)#log-buffer entries 1024</p>
+<p>Ruijie(config-nfpp)#log-buffer logs 1024 interval 300</p>
+<ul>
+<li>调整CPU保护机制中ARP阈值500pps；</li>
+</ul>
+<p>Ruijie(config)#cpu-protect type arp bandwidth 500</p>
+<ul>
+<li>为了防止伪 IP 源地址攻击， 导致出口路由器会话占满，要求S5交换机部署端口安全，接口Gi0/1只允许PC3通过。</li>
+</ul>
+<p>Ruijie(config)#int gigabitEthernet 0/1</p>
+<p>Ruijie(config-if-GigabitEthernet 0/1)#switchport mode access</p>
+<p>Ruijie(config-if-GigabitEthernet 0/1)#switchport port-security</p>
+<p>Ruijie(config-if-GigabitEthernet 0/1)#switchport port-security mac-address  PC3mac</p>
+<ol>
+<li><strong>MSTP及VRRP部署</strong></li>
+</ol>
+<p>在本部交换机S1、S2、S3、S4上配置MSTP防止二层环路；要求所有有线数据流经过S3转发，S3失效时经过S4转发。所配置的参数要求如下：</p>
+<p>Ruijie(config)#spanning-tree</p>
+<p>Ruijie(config)#spanning-tree mst configuration</p>
+<ul>
+<li>region-name为ruijie；</li>
+</ul>
+<p>Ruijie(config-mst)#name ruijie</p>
+<ul>
+<li>revision版本为1；</li>
+</ul>
+<p>Ruijie(config-mst)#revision 1</p>
+<ul>
+<li>S3作为实例中的主根， S4作为实例中的从根；</li>
+<li>主根优先级为4096，从根优先级为8192；</li>
+</ul>
+<p>S3(config)#spanning-tree mst 0 priority 4096</p>
+<p>S4(config)#spanning-tree mst 0 priority 8192</p>
+<ul>
+<li>在S3和S4上配置VRRP，实现主机的网关冗余，所配置的参数要求如表1-11；</li>
+</ul>
+<p>S3(config)#int vlan  10</p>
+<p>S3(config-if-VLAN 10)#vrrp 10 ip 192.168.10.254</p>
+<p>S3(config-if-VLAN 10)#vrrp 10 priority 150</p>
+<p>S3(config)#int vlan  20</p>
+<p>S3(config-if-VLAN 20)#vrrp 20 ip 192.168.20.254</p>
+<p>S3(config-if-VLAN 20)#vrrp 20 priority 150</p>
+<p>S3(config)#int vlan  30</p>
+<p>S3(config-if-VLAN 30)#vrrp 30 ip 192.168.30.254</p>
+<p>S3(config-if-VLAN 30)#vrrp 30 priority 150</p>
+<p>S3(config)#int vlan  40</p>
+<p>S3(config-if-VLAN 40)#vrrp 40 ip 192.168.40.254</p>
+<p>S3(config-if-VLAN 40)#vrrp 40 priority 150 </p>
+<p>S3(config)#int vlan  100</p>
+<p>S3(config-if-VLAN 30)#vrrp 100 ip 192.168.100.252</p>
+<p>S3(config-if-VLAN 30)#vrrp 100 priority 150</p>
+<p>S4(config)#int vlan  10</p>
+<p>S4(config-if-VLAN 10)#vrrp 10 ip 192.168.10.254</p>
+<p>S4(config-if-VLAN 10)#vrrp 10 priority 120</p>
+<p>S4(config)#int vlan  20</p>
+<p>S4(config-if-VLAN 20)#vrrp 20 ip 192.168.20.254</p>
+<p>S4(config-if-VLAN 20)#vrrp 20 priority 120</p>
+<p>S4(config)#int vlan  30</p>
+<p>S4(config-if-VLAN 30)#vrrp 30 ip 192.168.30.254</p>
+<p>S4(config-if-VLAN 30)#vrrp 30 priority 120</p>
+<p>S4(config)#int vlan  40</p>
+<p>S4(config-if-VLAN 40)#vrrp 40 ip 192.168.40.254</p>
+<p>S4(config-if-VLAN 40)#vrrp 40 priority 120 </p>
+<p>S3(config)#int vlan  100</p>
+<p>S3(config-if-VLAN 30)#vrrp 100 ip 192.168.100.253</p>
+<p>S3(config-if-VLAN 30)#vrrp 100 priority 120</p>
+<ul>
+<li>S3、S4各VRRP组中高优先级设置为150，低优先级设置为120。</li>
+</ul>
+<p><strong>表1-11 S3和S4的VRRP参数表</strong></p>
+<table>
+<thead>
+<tr>
+<th>VLAN</th>
+<th>VRRP备份组号（VRID）</th>
+<th>VRRP虚拟IP</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>VLAN10</td>
+<td>10</td>
+<td>192.XX.10.254</td>
+</tr>
+<tr>
+<td>VLAN20</td>
+<td>20</td>
+<td>192.XX.20.254</td>
+</tr>
+<tr>
+<td>VLAN30</td>
+<td>30</td>
+<td>192.XX.30.254</td>
+</tr>
+<tr>
+<td>VLAN40</td>
+<td>40</td>
+<td>192.XX.40.254</td>
+</tr>
+<tr>
+<td>VLAN100(交换机间)</td>
+<td>100</td>
+<td>192.XX.100.254</td>
+</tr>
+</tbody></table>
+<ol start="11">
+<li><p>   QoS部署 为了防止突发数据过大并导致网络拥挤，必须对接入的用户流量加以限制。具体要求如下 l    本部接入设备S5的Gi0/1至Gi0/16接口入方向设置接口限速，限速10Mbps,猝发流量1024 kbytes； Ruijie(config)#int range gigabitEthernet 0/1-16 Ruijie(config-if-range)#rate-limit input 10240 1024 l    二级运营商R3服务节点在带宽为2M的S3/0接口做流量整形； Ruijie(config)#int serial 3/0 Ruijie(config-if-Serial 3/0)#traffic-shape rate 2000000 l    二级运营商R3服务节点在G0/0接口做流量监管，上行报文流量不能超过10Mbps，Burst-normal为1M bytes, burst-max为2M bytes如果超过流量限制则将违规报文丢弃。 Ruijie(config-if-GigabitEthernet 0/0)# rate-limit output 10240 1024 2048 conform-action drop exceed-action drop  </p>
+</li>
+<li><p><strong>总分机构IPV4路由协议部署</strong></p>
+</li>
+</ol>
+<p>本部与分校内网均使用OSPF协议组网，本部、分校与互联网间使用静态路由协议。具体要求如下：</p>
+<ul>
+<li>本部S3、S4、EG1、AC1、AC2间运行OSPF，进程号为10，规划多区域：区域0（S3、S4、EG1），区域1（S3、S4、AC1、AC2）；</li>
+</ul>
+<p>区域0</p>
+<p>Ruijie(config)#router  ospf 10</p>
+<p>Ruijie(config)# network 10.1.0.0 0.0.0.3 area 0</p>
+<p>Ruijie(config)# network 192.168.10.0 0.0.0.255 area 0</p>
+<p>Ruijie(config)# network 192.168.20.0 0.0.0.255 area 0</p>
+<p>Ruijie(config)# network 192.168.30.0 0.0.0.255 area 0</p>
+<p>Ruijie(config)# network 192.168.40.0 0.0.0.255 area 0</p>
+<p>Ruijie(config)# network 192.168.100.0 0.0.0.255 area 0</p>
+<p>区域1</p>
+<p>Ruijie(config)#router  ospf 10</p>
+<p>Ruijie(config)# network 11.1.0.204 0.0.0.0 area 1</p>
+<p>Ruijie(config)# network 11.1.0.205 0.0.0.0 area 1</p>
+<p>Ruijie(config)# network 11.1.0.33 0.0.0.0 area 1</p>
+<p>Ruijie(config)# network 10.1.0.33 0.0.0.0 area 1</p>
+<p>Ruijie(config)# network 10.1.0.34 0.0.0.0 area 1</p>
+<p>Ruijie(config)# network 12.1.0.1 0.0.0.3 area 1</p>
+<p>Ruijie(config)# network 192.168.100.0 0.0.0.255 area 1</p>
+<p>Ruijie(config)# network 192.168.50.0 0.0.0.255 area 1</p>
+<p>Ruijie(config)# network 192.168.60.0 0.0.0.255 area 1</p>
+<ul>
+<li>AC1、AC2 OSPF接口不参与DR/BDR选举；</li>
+</ul>
+<p>Ruijie(config)#int loopback 0</p>
+<p>Ruijie(config-if-Loopback 0)#ip ospf priority 0</p>
+<ul>
+<li>区域1部署为完全NSSA类型进而简化AC1,AC2路由条目；</li>
+</ul>
+<p>Ruijie(config)#router ospf 10</p>
+<p>Ruijie(config-router)#area 1 nssa no-summary</p>
+<ul>
+<li>分部EG2、S5间运行OSPF，进程号为10，规划单区域：区域0（EG2、S5）；</li>
+</ul>
+<p>EG2</p>
+<p>Ruijie(config)#router ospf 10</p>
+<p>Ruijie(config-router)#passive-interface default </p>
+<p>Ruijie(config)# network 10.1.0.0 0.0.0.3 area 0</p>
+<p> Ruijie(config)# network 10.1.0.8 0.0.0.3 area 0</p>
+<p>S5</p>
+<p> Ruijie(config)# network 10.1.0.0 0.0.0.255 area 0</p>
+<p> Ruijie(config)# network 11.1.0.12 0.0.0.0 area 0</p>
+<p> Ruijie(config)# network 11.1.0.33 0.0.0.0 area 0</p>
+<p>Ruijie(config)# network 11.1.0.5 0.0.0.0 area 0</p>
+<p> Ruijie(config)# network 20.1.0.8 0.0.0.7 area 0</p>
+<p> Ruijie(config)# network 30.1.0. 0.0.0.7 area 0</p>
+<p> Ruijie(config)# network 40.1.0.8 0.0.0.7 area 0</p>
+<p>Ruijie(config)# network 194.0.10.0 0.0.0.255 area 0</p>
+<p> Ruijie(config)# network 194.0.20.0 0.0.0.255 area 0</p>
+<p> Ruijie(config)# network 194.0.30.0 0.0.0.255 area 0</p>
+<p> Ruijie(config)# network 194.0.40.0 0.0.0.255 area 0</p>
+<ul>
+<li>要求业务网段中不出现协议报文；</li>
+<li>要求所有路由协议都发布具体网段；</li>
+<li>为了管理方便，需要发布Loopback地址;</li>
+<li>优化OSPF相关配置，以尽量加快OSPF收敛；</li>
+</ul>
+<p>Ruijie(config-if-Loopback 0)#ip ospf hello-interval 10</p>
+<ul>
+<li>重发布路由进OSPF中使用类型1。</li>
+</ul>
+<p>注意：(S3需要重发布云平台（172.16.0.0/22）静态路由至本部内网) Ruijie(config)# network 193.0.0.0 0.0.0.3 area 0</p>
+<ol>
+<li><strong>路由选路部署</strong></li>
+</ol>
+<p>考虑到数据分流及负载均衡的目的，具体要求如下：</p>
+<ul>
+<li>可通过修改OSPF 路由COST达到分流的目的，且其值必须为5或10；</li>
+</ul>
+<p>Ruijie(config)#int loopback 0</p>
+<p>Ruijie(config-if-Loopback 0)#ip ospf cost 5</p>
+<p><strong>模块五：出口安全防护与远程接入</strong></p>
+<p>本部校区与分校无线用户需要通过独立的互联网线路访问外网资源，同时针对访问资源进行用户身份认证与信息审计监督。</p>
+<ol>
+<li><strong>出口NAT部署</strong></li>
+</ol>
+<p>具体配置参数如下：</p>
+<ul>
+<li>出口网关上进行NAT配置实现本部与分校的所有用户均可访问互联网，通过NAPT方式将内网用户IP地址转换到互联网接口上，同时总部用户仅可在周一到周五工作时间09：00-17:00（命名为work）访问互联网；</li>
+</ul>
+<p>Ruijie(config-)#interface GigabitEthernet 0/0 </p>
+<p>Ruijie(config-if-GigabitEthernet 0/0)#ip address 10.1.0.1 255.255.255.252</p>
+<p>Ruijie(config-)#interface GigabitEthernet 0/2</p>
+<p>Ruijie(config-if-GigabitEthernet 0/2)#ip add 20.1.0.6 255.255.255.248</p>
+<p>Ruijie(config)#interface GigabitEthernet 0/3 </p>
+<p>Ruijie(config-if-GigabitEthernet 0/3)#ip address 30.1.0.6 255.255.255.248</p>
+<p>Ruijie(config)#interface GigabitEthernet 0/4</p>
+<p>Ruijie(config-if-GigabitEthernet 0/4)#ip address 40.1.0.6 255.255.255.248</p>
+<p>Ruijie(config)#interface GigabitEthernet 0/0</p>
+<p>Ruijie(config-if-GigabitEthernet 0/0)#ip nat inside</p>
+<p>Ruijie(config-)#interface GigabitEthernet 0/2</p>
+<p>Ruijie(config-if-GigabitEthernet 0/3)#ip nat outside</p>
+<p>Ruijie(config)#interface GigabitEthernet 0/3</p>
+<p>Ruijie(config-if-GigabitEthernet 0/3)#ip nat outside</p>
+<p>Ruijie(config)#interface GigabitEthernet 0/4 </p>
+<p>Ruijie(config-if-GigabitEthernet 0/4)#ip nat outside</p>
+<p>Ruijie(config)#ip nat pool work 50.1.0.1  50.1.0.1 netmask 255.255.255.252</p>
+<p>Ruijie(config)#ip nat inside source list 101 pool work overload</p>
+<p>Ruijie(config)#time-range work</p>
+<p>Ruijie(config-time-range)#periodic weekdays 09:00 to 17:00</p>
+<p>Ruijie(config)#access-list 101 permit ip  any any time-range work</p>
+<p>Ruijie(config)#access-list 101 deny ip any any</p>
+<p>Ruijie(config)#int range gigabitEthernet 0/2-4</p>
+<p>Ruijie(config-if-range)#ip access-group 101 out</p>
+<ul>
+<li>在本部EG1上配置，使本部核心交换S4（11.1.0.34）设备的SSH服务可以通过互联网被访问，将其地址映射至联通线路上，映射地址为20.1.0.2；</li>
+</ul>
+<p>Ruijie(config)#int loopback 0</p>
+<p>Ruijie(config-if-Loopback 0)#ip add 11.10.0.34 255.255.255.255</p>
+<p>Ruijie(config)#int gigabitEthernet 0/2</p>
+<p>Ruijie(config-if-GigabitEthernet 0/2)#ip add 20.1.0.6 255.255.255.252</p>
+<p>Ruijie(config-if-GigabitEthernet 0/2)#ip nat outside</p>
+<p>Ruijie(config)#int gigabitEthernet 0/24</p>
+<p>Ruijie(config-if-GigabitEthernet 0/24)# ip nat inside</p>
+<p>Ruijie(config)#ip nat inside source static 11.1.0.34 20.1.0.2 permit-inside</p>
+<p>本部内网主机有访问上海办事处S6设备 的Telnet服务需求，但本部内网因网络规划要求不能引入外部路由，同时上海办事处网络运维人员考虑安全起见也不希望将S6设备（11.1.0.6）地址对外公布。为此规划在出口网关上进行NAT地址转化将S6真实地址映射至20.1.0.20。</p>
+<p>Ruijie(config)#int loopback 0</p>
+<p>Ruijie(config-if-Loopback 0)#ip add 11.1.0.6 255.255.255.255</p>
+<p>Ruijie(config)#int gigabitEthernet 0/2</p>
+<p>Ruijie(config-if-GigabitEthernet 0/2)#ip add 20.1.0.6 255.255.255.252</p>
+<p>Ruijie(config-if-GigabitEthernet 0/2)#ip nat outside</p>
+<p>Ruijie(config)#int gigabitEthernet 0/24</p>
+<p>Ruijie(config-if-GigabitEthernet 0/24)# ip nat inside</p>
+<p>Ruijie(config)#ip nat inside source static 11.1.0.34 20.1.0.2 permit-inside</p>
+<ol>
+<li><strong>全局流表策略部署</strong></li>
+</ol>
+<p>在用户没有防火墙做限制的情况下，如果遇到大量的伪源IP攻击，或者是端口扫描时，会把设备的流表给占满，而导致正常的数据无法建流而被丢弃，为此要求总部部署全局流表防火墙，ACL（编号为102）策略要求如下：</p>
+<ul>
+<li>放通所有IP到本设备外网接口的ICMP、Telnet协议; </li>
+<li>放通内网终端IP到外网所有资源的访问; </li>
+<li>放通任意IP来访问映射的内网交换机的资源; </li>
+<li>根据上下文要求放通设备已启用的功能协议端口。</li>
+</ul>
+<p>Ruijie(config)#access-list 102 permit 23 any any</p>
+<p>Ruijie(config)#access-list 102 permit ICMp ANy any</p>
+<p>Ruijie(config)#access-list 102 permit ip any any</p>
+<p>Ruijie(config)#int range gigabitEthernet 0/0-1</p>
+<p>Ruijie(config-if-range)#ip access-group 102 in l    </p>
+<ol>
+<li><strong>总分机构IPV4路由协议部署</strong></li>
+</ol>
+<p>本部与分校内网均使用OSPF协议组网，本部、分校与互联网间使用静态路由协议。具体要求如下：</p>
+<ul>
+<li>本部S3、S4、EG1、AC1、AC2间运行OSPF，进程号为10，规划多区域：区域0（S3、S4、EG1），区域1（S3、S4、AC1、AC2）；</li>
+</ul>
+<p>区域0</p>
+<p>Ruijie(config)#router  ospf 10</p>
+<p>Ruijie(config)# network 10.1.0.0 0.0.0.3 area 0</p>
+<p>Ruijie(config)# network 11.1.0.33 0.0.0.0 area 0</p>
+<p>Ruijie(config)# network 192.168.10.0 0.0.0.255 area 0</p>
+<p>Ruijie(config)# network 192.168.20.0 0.0.0.255 area 0</p>
+<p>Ruijie(config)# network 192.168.30.0 0.0.0.255 area 0</p>
+<p>Ruijie(config)# network 192.168.40.0 0.0.0.255 area 0</p>
+<p>Ruijie(config)# network 192.168.100.0 0.0.0.255 area 0</p>
+<p>区域1</p>
+<p>Ruijie(config)#router  ospf 10</p>
+<p>Ruijie(config)# network 192.168.100.0 0.0.0.255 area 1</p>
+<p>Ruijie(config)# network 192.168.50.0 0.0.0.255 area 1</p>
+<p>Ruijie(config)# network 192.168.60.0 0.0.0.255 area 1</p>
+<ul>
+<li>AC1、AC2 OSPF接口不参与DR/BDR选举；</li>
+</ul>
+<p>Ruijie(config)#int loopback 0</p>
+<p>Ruijie(config-if-Loopback 0)#ip ospf priority 0</p>
+<ul>
+<li>区域1部署为完全NSSA类型进而简化AC1,AC2路由条目；</li>
+</ul>
+<p>Ruijie(config)#router ospf 10</p>
+<p>Ruijie(config-router)#area 1 nssa no-summary</p>
+<ul>
+<li>分部EG2、S5间运行OSPF，进程号为10，规划单区域：区域0（EG2、S5）；</li>
+</ul>
+<p>Ruijie(config)#router ospf 10</p>
+<p>Ruijie(config-router)#passive-interface default </p>
+<p>Ruijie(config)# network 10.1.0.0 0.0.0.3 area 0</p>
+<p> Ruijie(config)# network 10.1.0.8 0.0.0.3 area 0</p>
+<p> Ruijie(config)# network 10.1.0.0 0.0.0.255 area 0</p>
+<p> Ruijie(config)# network 11.1.0.12 0.0.0.0 area 0</p>
+<p> Ruijie(config)# network 11.1.0.33 0.0.0.0 area 0</p>
+<p> Ruijie(config)# network 20.1.0.8 0.0.0.7 area 0</p>
+<p> Ruijie(config)# network 30.1.0.8 0.0.0.7 area 0</p>
+<p> Ruijie(config)# network 40.1.0.8 0.0.0.7 area 0</p>
+<p> Ruijie(config)# network 194.0.20.0 0.0.0.255 area 0</p>
+<p> Ruijie(config)# network 194.0.30.0 0.0.0.255 area 0</p>
+<p> Ruijie(config)# network 194.0.40.0 0.0.0.255 area 0</p>
+<ul>
+<li>要求业务网段中不出现协议报文；</li>
+<li>要求所有路由协议都发布具体网段；</li>
+<li>为了管理方便，需要发布Loopback地址;</li>
+<li>优化OSPF相关配置，以尽量加快OSPF收敛；</li>
+</ul>
+<p>Ruijie(config-if-Loopback 0)#ip ospf hello-interval 10</p>
+<ul>
+<li>重发布路由进OSPF中使用类型1。</li>
+</ul>
+<p>注意：(S3需要重发布云平台（172.16.0.0/22）静态路由至本部内网)</p>
+<ol>
+<li><strong>路由选路部署</strong></li>
+</ol>
+<p>考虑到数据分流及负载均衡的目的，具体要求如下：</p>
+<ul>
+<li>可通过修改OSPF 路由COST达到分流的目的，且其值必须为5或10；</li>
+</ul>
+<p>Ruijie(config)#int loopback 0</p>
+<p>Ruijie(config-if-Loopback 0)#ip ospf cost 5</p>
+<p><strong>块五：出口安全防护与远程接入</strong></p>
+<p>本部校区与分校无线用户需要通过独立的互联网线路访问外网资源，同时针对访问资源进行用户身份认证与信息审计监督。</p>
+<ol>
+<li><strong>出口NAT部署</strong></li>
+</ol>
+<p>具体配置参数如下：</p>
+<ul>
+<li>出口网关上进行NAT配置实现本部与分校的所有用户均可访问互联网，通过NAPT方式将内网用户IP地址转换到互联网接口上，同时总部用户仅可在周一到周五工作时间09：00-17:00（命名为work）访问互联网；</li>
+</ul>
+<p>Ruijie(config-)#interface GigabitEthernet 0/0 </p>
+<p>Ruijie(config-if-GigabitEthernet 0/0)#ip address 10.1.0.1 255.255.255.252</p>
+<p>Ruijie(config-)#interface GigabitEthernet 0/2</p>
+<p>Ruijie(config-if-GigabitEthernet 0/2)#ip add 20.1.0.6 255.255.255.248</p>
+<p>Ruijie(config)#interface GigabitEthernet 0/3 </p>
+<p>Ruijie(config-if-GigabitEthernet 0/3)#ip address 30.1.0.6 255.255.255.248</p>
+<p>Ruijie(config)#interface GigabitEthernet 0/4</p>
+<p>Ruijie(config-if-GigabitEthernet 0/4)#ip address 40.1.0.6 255.255.255.248</p>
+<p>Ruijie(config)#interface GigabitEthernet 0/0</p>
+<p>Ruijie(config-if-GigabitEthernet 0/0)#ip nat inside</p>
+<p>Ruijie(config-)#interface GigabitEthernet 0/2</p>
+<p>Ruijie(config-if-GigabitEthernet 0/3)#ip nat outside</p>
+<p>Ruijie(config)#interface GigabitEthernet 0/3</p>
+<p>Ruijie(config-if-GigabitEthernet 0/3)#ip nat outside</p>
+<p>Ruijie(config)#interface GigabitEthernet 0/4 </p>
+<p>Ruijie(config-if-GigabitEthernet 0/4)#ip nat outside</p>
+<p>Ruijie(config)#ip nat pool work 50.1.0.1  50.1.0.1 netmask 255.255.255.252</p>
+<p>Ruijie(config)#ip nat inside source list 101 pool work overload</p>
+<p>Ruijie(config)#time-range work</p>
+<p>Ruijie(config-time-range)#periodic weekdays 09:00 to 17:00</p>
+<p>Ruijie(config)#access-list 101 permit ip  any any time-range work</p>
+<p>Ruijie(config)#access-list 101 deny ip any any</p>
+<p>Ruijie(config)#int range gigabitEthernet 0/2-4</p>
+<p>Ruijie(config-if-range)#ip access-group 101 out</p>
+<ul>
+<li>在本部EG1上配置，使本部核心交换S4（11.1.0.34）设备的SSH服务可以通过互联网被访问，将其地址映射至联通线路上，映射地址为20.1.0.2；</li>
+</ul>
+<p>Ruijie(config)#int loopback 0</p>
+<p>Ruijie(config-if-Loopback 0)#ip add 11.10.0.34 255.255.255.255</p>
+<p>Ruijie(config)#int gigabitEthernet 0/2</p>
+<p>Ruijie(config-if-GigabitEthernet 0/2)#ip add 20.1.0.6 255.255.255.252</p>
+<p>Ruijie(config-if-GigabitEthernet 0/2)#ip nat outside</p>
+<p>Ruijie(config)#int gigabitEthernet 0/24</p>
+<p>Ruijie(config-if-GigabitEthernet 0/24)# ip nat inside</p>
+<p>Ruijie(config)#ip nat inside source static 11.1.0.34 20.1.0.2 permit-inside</p>
+<p>本部内网主机有访问上海办事处S6设备 的Telnet服务需求，但本部内网因网络规划要求不能引入外部路由，同时上海办事处网络运维人员考虑安全起见也不希望将S6设备（11.1.0.6）地址对外公布。为此规划在出口网关上进行NAT地址转化将S6真实地址映射至20.1.0.20。</p>
+<p>Ruijie(config)#int loopback 0</p>
+<p>Ruijie(config-if-Loopback 0)#ip add 11.1.0.6 255.255.255.255</p>
+<p>Ruijie(config)#int gigabitEthernet 0/2</p>
+<p>Ruijie(config-if-GigabitEthernet 0/2)#ip add 20.1.0.6 255.255.255.252</p>
+<p>Ruijie(config-if-GigabitEthernet 0/2)#ip nat outside</p>
+<p>Ruijie(config)#int gigabitEthernet 0/24</p>
+<p>Ruijie(config-if-GigabitEthernet 0/24)# ip nat inside</p>
+<p>Ruijie(config)#ip nat inside source static 11.1.0.34 20.1.0.2 permit-inside</p>
+<ol>
+<li><strong>全局流表策略部署</strong></li>
+</ol>
+<p>在用户没有防火墙做限制的情况下，如果遇到大量的伪源IP攻击，或者是端口扫描时，会把设备的流表给占满，而导致正常的数据无法建流而被丢弃，为此要求总部部署全局流表防火墙，ACL（编号为102）策略要求如下：</p>
+<ul>
+<li>放通所有IP到本设备外网接口的ICMP、Telnet协议; </li>
+<li>放通内网终端IP到外网所有资源的访问; </li>
+<li>放通任意IP来访问映射的内网交换机的资源; </li>
+<li>根据上下文要求放通设备已启用的功能协议端口。</li>
+</ul>
+<p>Ruijie(config)#access-list 102 permit 23 any any</p>
+<p>Ruijie(config)#access-list 102 permit ICMp ANy any</p>
+<p>Ruijie(config)#access-list 102 permit ip any any</p>
+<p>Ruijie(config)#int range gigabitEthernet 0/0-1</p>
+<p>Ruijie(config-if-range)#ip access-group 102 in l    </p>
+<ol>
+<li><strong>Web Portal用户认证部署</strong></li>
+</ol>
+<ul>
+<li>在本部网关上启用Web Portal认证服务，并创建user1、user2，密码均为XX（现场提供）；</li>
+</ul>
+<p>Ruijie(config)#web-auth  enable</p>
+<p>Ruijie(config)#username user1  password admin </p>
+<p>Ruijie(config)#username user2  password admin  </p>
+<ul>
+<li><p>本部有线用户需进行WEB认证访问互联网；</p>
+</li>
+<li><p>本部无线用户不需在EG上进行WEB认证即可访问互联网。</p>
+</li>
+</ul>
+<p>Ruijie(config)#web-auth direct-host 192.0.100.1 </p>
+<p>Ruijie(config)#web-auth direct-host 192.0.50.0  </p>
+<p>Ruijie(config)#web-auth direct-host 192.0.60.0</p>
 
                 
             </div>
@@ -436,7 +913,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://shellyDemo.github.io/2021/01/01/hello-world/">https://shellyDemo.github.io/2021/01/01/hello-world/</a>
+                    <a href="https://shellyDemo.github.io/2021/01/13/2020Ruijie%E4%BC%81%E6%83%B3%E6%9D%AF%E7%9C%81%E8%B5%9B%E7%BB%83%E4%B9%A0%E9%A2%98%E8%A7%A3%E6%9E%90/">https://shellyDemo.github.io/2021/01/13/2020Ruijie%E4%BC%81%E6%83%B3%E6%9D%AF%E7%9C%81%E8%B5%9B%E7%BB%83%E4%B9%A0%E9%A2%98%E8%A7%A3%E6%9E%90/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -519,13 +996,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/01/13/2020Ruijie%E4%BC%81%E6%83%B3%E6%9D%AF%E7%9C%81%E8%B5%9B%E7%BB%83%E4%B9%A0%E9%A2%98%E8%A7%A3%E6%9E%90/">
+                <a href="/2021/01/13/title-md/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt=":title.md">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">:title.md</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -553,7 +1030,7 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
                 <a href="/2021/01/01/hello-world/">
@@ -583,7 +1060,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
